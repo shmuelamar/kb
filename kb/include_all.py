@@ -15,6 +15,7 @@ from kb.kg_probe_reader import KgProbeReader
 
 from kb.evaluation.classification_model import SimpleClassifier
 from kb.evaluation.tacred_dataset_reader import TacredDatasetReader
+from kb.evaluation.mnli_dataset_reader import MultiNLIDatasetReader
 from kb.evaluation.wic_dataset_reader import WicDatasetReader
 from kb.evaluation.semeval2010_task8 import SemEval2010Task8Reader, SemEval2010Task8Metric
 from kb.evaluation.fbeta_measure import FBetaMeasure
