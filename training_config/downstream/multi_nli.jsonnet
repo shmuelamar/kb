@@ -62,7 +62,7 @@
     "train_data_path": "../multinli_1.0/multinli_1.0_train.jsonl",
     "validation_data_path": "../multinli_1.0/multinli_1.0_dev.jsonl",
     "trainer": {
-//        "cuda_device": 0,
+        "cuda_device": 0,
         "gradient_accumulation_batch_size": 32,
         "learning_rate_scheduler": {
             "type": "slanted_triangular",
