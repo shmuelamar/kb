@@ -31,6 +31,10 @@ class MultiNLIDatasetReader(DatasetReader):
                 text_b = example['sentence2']
                 label = example['gold_label']
 
+                # FIXME: what we do about disagreement on dataset?
+                if label == '-':
+                    continue
+
                 token_candidates = self.tokenizer.tokenize_and_generate_candidates(text_a, text_b)
                 fields = self.tokenizer.convert_tokens_candidates_to_fields(token_candidates)
                 fields['label_ids'] = LabelField(self.label_to_index[label], skip_indexing=True)
