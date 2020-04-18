@@ -4,3 +4,4 @@ pytest
 nltk
 ipython
 spacy
+pandas

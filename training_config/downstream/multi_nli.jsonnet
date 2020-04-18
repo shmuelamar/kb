@@ -59,15 +59,16 @@
         "num_labels": 3,
         "task": "classification"
     },
-    "train_data_path": "../multinli_1.0/multinli_1.0_train.jsonl",
-    "validation_data_path": "../multinli_1.0/multinli_1.0_dev.jsonl",
+    "train_data_path": "./mnli_1.0/train.tsv",
+    "validation_data_path": "./mnli_1.0/dev_matched.tsv",
+    "test_data_path": "./mnli_1.0/test_matched.tsv",
     "trainer": {
         "cuda_device": 0,
         "gradient_accumulation_batch_size": 32,
         "learning_rate_scheduler": {
             "type": "slanted_triangular",
             "num_epochs": 5,
-            "num_steps_per_epoch": 12272 // TODO: maybe change?
+            "num_steps_per_epoch": 12272
         },
         "moving_average": {
             "decay": 0.95
