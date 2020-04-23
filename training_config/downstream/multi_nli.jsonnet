@@ -50,7 +50,9 @@
         "model": {
             "type": "from_archive",
             "archive_file": "s3://allennlp/knowbert/models/knowbert_wiki_wordnet_model.tar.gz",
+            //"weights_file": ""
         },
+        //"weights_file": "./",
         "type": "simple-classifier",
         "bert_dim": 768,
         "metric_a": {
@@ -59,9 +61,8 @@
         "num_labels": 3,
         "task": "classification"
     },
-    "train_data_path": "./mnli_1.0/train.tsv",
-    "validation_data_path": "./mnli_1.0/dev_matched.tsv",
-    "test_data_path": "./mnli_1.0/test_matched.tsv",
+    "train_data_path": "./mnli_1.0/train.tsv.gz",
+    "validation_data_path": "./mnli_1.0/dev_matched.tsv.gz",
     "trainer": {
         "cuda_device": 0,
         "gradient_accumulation_batch_size": 32,

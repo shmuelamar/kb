@@ -16,6 +16,7 @@ from kb.kg_probe_reader import KgProbeReader
 from kb.evaluation.classification_model import SimpleClassifier
 from kb.evaluation.tacred_dataset_reader import TacredDatasetReader
 from kb.evaluation.mnli_dataset_reader import MultiNLIDatasetReader
+from kb.evaluation.hypernymy_dataset_reader import HypernymyDatasetReader
 from kb.evaluation.wic_dataset_reader import WicDatasetReader
 from kb.evaluation.semeval2010_task8 import SemEval2010Task8Reader, SemEval2010Task8Metric
 from kb.evaluation.fbeta_measure import FBetaMeasure
@@ -44,10 +45,11 @@ class ModelArchiveFromParams(Model):
         """
         archive_file = params.pop("archive_file")
         overrides = params.pop("overrides", None)
+        weights_file = params.pop("weights_file", None)
         params.assert_empty("ModelArchiveFromParams")
         if overrides is not None:
-            archive = load_archive(archive_file, overrides=json.dumps({'model': overrides.as_dict()}))
+            archive = load_archive(archive_file, overrides=json.dumps({'model': overrides.as_dict()}), weights_file=weights_file)
         else:
-            archive = load_archive(archive_file)
+            archive = load_archive(archive_file, weights_file=weights_file)
         return archive.model
 

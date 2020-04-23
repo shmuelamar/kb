@@ -29,7 +29,8 @@ class SimpleClassifier(Model):
                        concat_word_a: bool = False,
                        include_cls: bool = True,
                        dropout_prob: float = 0.1,
-                       use_bce_loss: bool = False):
+                       use_bce_loss: bool = False,
+                       classifier_weights_file: str = None):
 
         super().__init__(vocab)
         assert task == 'regression' or task == 'classification', task
@@ -60,6 +61,11 @@ class SimpleClassifier(Model):
 
         self.dropout = torch.nn.Dropout(dropout_prob)
         self.classifier = torch.nn.Linear(classifier_dim, num_labels)
+
+        # load last layer weights from file
+        if classifier_weights_file:
+            clf_state = torch.load(classifier_weights_file)
+            self.classifier.load_state_dict(clf_state)
 
         if metric_a is not None:
             self.metrics.append(metric_a)
